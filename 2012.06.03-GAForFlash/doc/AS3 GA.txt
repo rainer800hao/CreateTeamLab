@@ -1,0 +1,36 @@
+file:///E:/CreateTeam/source/2012.02.03-太阳风（新浪）项目/source/bin/player/room.html
+
+import com.google.analytics.API;
+import com.google.analytics.AnalyticsTracker;
+import com.google.analytics.GATracker;
+//import com.google.analytics.debug.VisualDebugMode;
+
+import flash.events.Event;
+
+trace( API.version );
+
+//setup1
+/*
+GATracker.autobuild = false;
+var tracker:AnalyticsTracker = new GATracker( this, "UA-111-222" );
+tracker.mode = "AS3";
+tracker.visualDebug = true;
+tracker.debug.verbose = true;
+GATracker(tracker).build();
+*/
+
+//setup2
+var tracker:AnalyticsTracker = new GATracker( this, "UA-6441425-4", "AS3", false );
+//tracker.debug.mode    = VisualDebugMode.advanced;
+//tracker.debug.traceOutput = true;
+//tracker.debug.GIFRequests = true;
+
+tracker.trackPageview( "/hello/world" );
+
+
+var onButtonClick:Function = function( event:Event ):void
+{
+	tracker.trackEvent( "Button", "click", "hello world", 123 );
+}
+
+mybutton.addEventListener( MouseEvent.CLICK, onButtonClick );
